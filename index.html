@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -167,10 +168,7 @@ h3{margin:0 0 9px}
   margin-bottom:0;
 }
 
-
-/* =========================================
-   PROFILE SELECTION
-========================================= */
+/* PROFILE */
 
 .selector{
   max-width:820px;
@@ -246,10 +244,7 @@ h3{margin:0 0 9px}
   margin-top:25px;
 }
 
-
-/* =========================================
-   ASSESSMENT
-========================================= */
+/* ASSESSMENT */
 
 .assessment{
   max-width:760px;
@@ -347,10 +342,7 @@ h3{margin:0 0 9px}
   min-height:18px;
 }
 
-
-/* =========================================
-   FORM
-========================================= */
+/* FORM */
 
 .form-card{
   max-width:680px;
@@ -414,13 +406,10 @@ input:focus,select:focus{
   line-height:1.5;
 }
 
-
-/* =========================================
-   REPORT
-========================================= */
+/* REPORT */
 
 .report{
-  max-width:900px;
+  max-width:940px;
   margin:0 auto;
 }
 
@@ -465,6 +454,13 @@ input:focus,select:focus{
   font-weight:800;
 }
 
+.readiness-message{
+  max-width:720px;
+  margin:20px auto 0;
+  color:#dce1ec;
+  line-height:1.6;
+}
+
 .report-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -503,6 +499,42 @@ input:focus,select:focus{
   line-height:1.65;
 }
 
+.insight{
+  margin-top:20px;
+  background:#f7f8fc;
+  border-radius:14px;
+  padding:17px;
+  color:#596277;
+  line-height:1.6;
+}
+
+.risk{
+  margin-top:18px;
+  padding:15px 17px;
+  border-left:4px solid #5965d5;
+  background:#f5f6ff;
+  color:#4f5870;
+  line-height:1.6;
+  border-radius:8px;
+}
+
+.priority-card{
+  margin-top:18px;
+  background:#182033;
+  color:#fff;
+  border-radius:20px;
+  padding:28px;
+}
+
+.priority-card .eyebrow{
+  color:#b9c0ff;
+}
+
+.priority-card p{
+  color:#d1d6e2;
+  line-height:1.65;
+}
+
 .cta{
   margin-top:22px;
   background:#eef0ff;
@@ -518,11 +550,6 @@ input:focus,select:focus{
   margin:10px auto 20px;
 }
 
-
-/* =========================================
-   FOOTER
-========================================= */
-
 footer{
   text-align:center;
   padding:30px;
@@ -530,10 +557,7 @@ footer{
   font-size:13px;
 }
 
-
-/* =========================================
-   MOBILE
-========================================= */
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -599,13 +623,9 @@ footer{
 
 </header>
 
-
 <main>
 
-
-<!-- =====================================================
-     LANDING
-===================================================== -->
+<!-- LANDING -->
 
 <section id="landing" class="screen active">
 
@@ -625,23 +645,17 @@ footer{
       influence, visibility and executive positioning communicate it.
     </p>
 
-    <button
-      class="primary"
-      onclick="startAssessment()"
-    >
+    <button class="primary" onclick="startAssessment()">
       Start My Executive Readiness Assessment →
     </button>
 
     <div class="trust">
-
       <span>✓ No obligation</span>
       <span>✓ Personalized score</span>
       <span>✓ Built for experienced leaders</span>
-
     </div>
 
   </div>
-
 
   <div class="steps">
 
@@ -667,8 +681,8 @@ footer{
       <div class="step-number">03</div>
       <h3>Act</h3>
       <p>
-        Discover your highest-leverage opportunity and your
-        recommended next 90-day focus.
+        Discover your highest-leverage opportunity and recommended
+        90-day leadership focus.
       </p>
     </div>
 
@@ -676,10 +690,7 @@ footer{
 
 </section>
 
-
-<!-- =====================================================
-     PROFILE
-===================================================== -->
+<!-- PROFILE -->
 
 <section id="profile" class="screen">
 
@@ -702,20 +713,15 @@ footer{
 
     </div>
 
-
     <div class="selector-block">
 
       <div class="selector-title">
         01 — YOUR CURRENT LEVEL
       </div>
 
-      <div
-        id="currentRoleChoices"
-        class="choice-grid"
-      ></div>
+      <div id="currentRoleChoices" class="choice-grid"></div>
 
     </div>
-
 
     <div class="selector-block">
 
@@ -723,13 +729,9 @@ footer{
         02 — YOUR TARGET
       </div>
 
-      <div
-        id="targetRoleChoices"
-        class="choice-grid"
-      ></div>
+      <div id="targetRoleChoices" class="choice-grid"></div>
 
     </div>
-
 
     <div class="selector-block">
 
@@ -737,13 +739,9 @@ footer{
         03 — WHAT MATTERS MOST RIGHT NOW?
       </div>
 
-      <div
-        id="challengeChoices"
-        class="choice-grid"
-      ></div>
+      <div id="challengeChoices" class="choice-grid"></div>
 
     </div>
-
 
     <div
       id="selectionSummary"
@@ -751,12 +749,7 @@ footer{
       style="display:none;"
     ></div>
 
-
-    <div
-      id="profileError"
-      class="error"
-    ></div>
-
+    <div id="profileError" class="error"></div>
 
     <div class="selector-actions">
 
@@ -774,10 +767,7 @@ footer{
 
 </section>
 
-
-<!-- =====================================================
-     ASSESSMENT
-===================================================== -->
+<!-- ASSESSMENT -->
 
 <section id="assessment" class="screen">
 
@@ -795,38 +785,21 @@ footer{
 
     </div>
 
-
     <div class="progress">
 
-      <div
-        id="progressBar"
-        class="progress-bar"
-      ></div>
+      <div id="progressBar" class="progress-bar"></div>
 
     </div>
 
-
     <div class="question-card">
 
-      <div
-        id="questionCategory"
-        class="question-category"
-      ></div>
+      <div id="questionCategory" class="question-category"></div>
 
-      <div
-        id="questionText"
-        class="question"
-      ></div>
+      <div id="questionText" class="question"></div>
 
-      <div
-        id="options"
-        class="options"
-      ></div>
+      <div id="options" class="options"></div>
 
-      <div
-        id="errorMessage"
-        class="error"
-      ></div>
+      <div id="errorMessage" class="error"></div>
 
       <div class="navigation">
 
@@ -853,10 +826,7 @@ footer{
 
 </section>
 
-
-<!-- =====================================================
-     LEAD CAPTURE
-===================================================== -->
+<!-- LEAD CAPTURE -->
 
 <section id="leadCapture" class="screen">
 
@@ -875,7 +845,6 @@ footer{
       readiness score, leadership gaps and recommended next step.
     </p>
 
-
     <form id="leadForm" onsubmit="submitLead(event)">
 
       <label for="name">
@@ -890,7 +859,6 @@ footer{
         placeholder="Your full name"
       >
 
-
       <label for="email">
         Email <span class="required">*</span>
       </label>
@@ -902,7 +870,6 @@ footer{
         autocomplete="email"
         placeholder="you@example.com"
       >
-
 
       <label>
         WhatsApp / Phone <span class="required">*</span>
@@ -979,7 +946,6 @@ footer{
 
         </select>
 
-
         <input
           id="phone"
           type="tel"
@@ -990,7 +956,6 @@ footer{
         >
 
       </div>
-
 
       <label for="linkedin">
         LinkedIn URL
@@ -1006,14 +971,9 @@ footer{
         placeholder="https://linkedin.com/in/..."
       >
 
-
       <div class="checkbox-row">
 
-        <input
-          id="consent"
-          type="checkbox"
-          required
-        >
+        <input id="consent" type="checkbox" required>
 
         <label for="consent">
           I agree to receive my assessment and relevant
@@ -1021,7 +981,6 @@ footer{
         </label>
 
       </div>
-
 
       <button
         class="primary"
@@ -1037,20 +996,13 @@ footer{
 
 </section>
 
-
-<!-- =====================================================
-     REPORT
-===================================================== -->
+<!-- REPORT -->
 
 <section id="report" class="screen">
 
   <div class="report">
 
-    <div
-      id="transitionLabel"
-      class="transition-label"
-    ></div>
-
+    <div id="transitionLabel" class="transition-label"></div>
 
     <div class="score-card">
 
@@ -1061,39 +1013,29 @@ footer{
         YOUR EXECUTIVE READINESS REPORT
       </div>
 
-      <div
-        id="scoreValue"
-        class="score"
-      >
-        0
-      </div>
+      <div id="scoreValue" class="score">0</div>
 
       <div class="score-label">
         READINESS
       </div>
 
-      <div
-        id="profileLabel"
-        class="profile"
-      ></div>
+      <div id="profileLabel" class="profile"></div>
+
+      <div id="readinessMessage" class="readiness-message"></div>
 
     </div>
-
 
     <div class="report-grid">
 
       <div class="report-card">
 
-        <h3>
-          Leadership Dimensions
-        </h3>
+        <h3>Leadership Dimensions</h3>
 
         <br>
 
         <div id="metrics"></div>
 
       </div>
-
 
       <div class="report-card">
 
@@ -1105,21 +1047,39 @@ footer{
 
         <p id="opportunityText"></p>
 
-        <div
-          class="eyebrow"
-          style="margin-top:25px;"
-        >
-          RECOMMENDED FOCUS
+        <div class="insight">
+
+          <strong>Your strongest signal</strong>
+
+          <p id="strengthText"></p>
+
         </div>
 
-        <h3 id="focusTitle"></h3>
+        <div class="risk">
 
-        <p id="focusText"></p>
+          <strong>Transition Risk</strong>
+
+          <p id="transitionRisk"></p>
+
+        </div>
 
       </div>
 
     </div>
 
+    <div class="priority-card">
+
+      <div class="eyebrow">
+        YOUR 90-DAY EXECUTIVE PRIORITY
+      </div>
+
+      <h2 id="focusTitle"></h2>
+
+      <p id="focusText"></p>
+
+      <p id="coachingMessage"></p>
+
+    </div>
 
     <div class="cta">
 
@@ -1128,8 +1088,10 @@ footer{
       </h2>
 
       <p>
-        A short conversation can help translate your assessment
-        into a practical 90-day executive growth priority.
+        Your assessment identifies the signal that may have the
+        greatest influence on your next leadership move.
+        A short executive conversation can help translate that
+        insight into a practical 90-day strategy.
       </p>
 
       <button
@@ -1156,11 +1118,9 @@ footer{
 
 </main>
 
-
 <footer>
-  Rise&Lead • Build demand. Capture intent. Create qualified conversations.
+  Rise&Lead • Executive Leadership Intelligence
 </footer>
-
 
 <script>
 
@@ -1176,7 +1136,7 @@ const BOOKING_URL =
 
 
 /* =========================================================
-   USER PROFILE OPTIONS
+   PROFILE OPTIONS
 ========================================================= */
 
 const currentRoles = [
@@ -1218,10 +1178,11 @@ let lastResult = null;
 
 
 /* =========================================================
-   CORE DIMENSIONS
+   DIMENSIONS
 ========================================================= */
 
 const dimensions = [
+
   "Strategic Scope",
   "Business Impact",
   "Executive Influence",
@@ -1232,6 +1193,7 @@ const dimensions = [
   "Leadership Positioning",
   "Stakeholder Intelligence",
   "Career Readiness"
+
 ];
 
 
@@ -1372,10 +1334,10 @@ function getWeights(){
 
   const weights = {};
 
-  dimensions.forEach(d => weights[d] = 1);
+  dimensions.forEach(d => {
+    weights[d] = 1;
+  });
 
-  const transition =
-    `${currentRole} → ${targetRole}`;
 
   if(targetRole === "Director"){
 
@@ -1384,6 +1346,7 @@ function getWeights(){
     weights["Executive Influence"] = 1.1;
 
   }
+
 
   if(targetRole === "VP"){
 
@@ -1394,6 +1357,7 @@ function getWeights(){
 
   }
 
+
   if(targetRole === "SVP / Business Head"){
 
     weights["Enterprise Thinking"] = 1.5;
@@ -1402,6 +1366,7 @@ function getWeights(){
     weights["Executive Influence"] = 1.3;
 
   }
+
 
   if(targetRole === "CXO"){
 
@@ -1415,49 +1380,75 @@ function getWeights(){
 
   }
 
+
   if(primaryChallenge === "Executive Presence"){
+
     weights["Executive Presence"] *= 1.3;
+
   }
+
 
   if(primaryChallenge === "Strategic Leadership"){
+
     weights["Strategic Scope"] *= 1.3;
     weights["Enterprise Thinking"] *= 1.2;
+
   }
+
 
   if(primaryChallenge === "Influence"){
+
     weights["Executive Influence"] *= 1.3;
     weights["Stakeholder Intelligence"] *= 1.2;
+
   }
+
 
   if(primaryChallenge === "Executive Visibility"){
+
     weights["Executive Visibility"] *= 1.4;
     weights["Leadership Positioning"] *= 1.3;
+
   }
+
 
   if(primaryChallenge === "Corporate Politics"){
+
     weights["Stakeholder Intelligence"] *= 1.5;
     weights["Executive Influence"] *= 1.2;
+
   }
 
+
   if(primaryChallenge === "Career Acceleration"){
+
     weights["Career Readiness"] *= 1.3;
     weights["Executive Visibility"] *= 1.2;
     weights["Leadership Positioning"] *= 1.2;
+
   }
+
 
   if(primaryChallenge === "Leadership Positioning"){
+
     weights["Leadership Positioning"] *= 1.5;
     weights["Executive Visibility"] *= 1.2;
+
   }
 
+
   if(primaryChallenge === "CXO Preparation"){
+
     weights["Enterprise Thinking"] *= 1.3;
     weights["Business Impact"] *= 1.3;
     weights["Leadership Scale"] *= 1.3;
     weights["Leadership Positioning"] *= 1.3;
+
   }
 
+
   return weights;
+
 }
 
 
@@ -1469,6 +1460,7 @@ function buildQuestions(){
 
   const weights = getWeights();
 
+
   questions =
     questionBank
       .slice()
@@ -1477,6 +1469,7 @@ function buildQuestions(){
           (weights[b.dimension] || 1) -
           (weights[a.dimension] || 1)
       );
+
 
   answers =
     new Array(
@@ -1498,17 +1491,22 @@ function showScreen(id){
       screen.classList.remove("active")
     );
 
+
   const target =
     document.getElementById(id);
 
+
   if(!target) return;
 
+
   target.classList.add("active");
+
 
   window.scrollTo({
     top:0,
     behavior:"smooth"
   });
+
 }
 
 
@@ -1525,11 +1523,12 @@ function startAssessment(){
   renderChoices();
 
   showScreen("profile");
+
 }
 
 
 /* =========================================================
-   RENDER PROFILE CHOICES
+   PROFILE CHOICES
 ========================================================= */
 
 function renderChoices(){
@@ -1544,6 +1543,7 @@ function renderChoices(){
     currentRole
   );
 
+
   renderChoiceGroup(
     "targetRoleChoices",
     targetRoles,
@@ -1553,6 +1553,7 @@ function renderChoices(){
     },
     targetRole
   );
+
 
   renderChoiceGroup(
     "challengeChoices",
@@ -1577,22 +1578,28 @@ function renderChoiceGroup(
   const container =
     document.getElementById(elementId);
 
+
   container.innerHTML = "";
+
 
   values.forEach(value => {
 
     const button =
       document.createElement("button");
 
+
     button.type = "button";
 
     button.className = "choice";
+
 
     if(value === selected){
       button.classList.add("selected");
     }
 
+
     button.textContent = value;
+
 
     button.onclick = () => {
 
@@ -1601,6 +1608,7 @@ function renderChoiceGroup(
       renderChoices();
 
     };
+
 
     container.appendChild(button);
 
@@ -1618,6 +1626,7 @@ function updateSummary(){
   const summary =
     document.getElementById("selectionSummary");
 
+
   if(
     !currentRole ||
     !targetRole ||
@@ -1627,9 +1636,12 @@ function updateSummary(){
     summary.style.display = "none";
 
     return;
+
   }
 
+
   summary.style.display = "block";
+
 
   summary.innerHTML = `
     <strong>Your personalized assessment:</strong><br>
@@ -1645,7 +1657,7 @@ function updateSummary(){
 
 
 /* =========================================================
-   BEGIN DYNAMIC ASSESSMENT
+   BEGIN ASSESSMENT
 ========================================================= */
 
 function beginDynamicAssessment(){
@@ -1653,13 +1665,16 @@ function beginDynamicAssessment(){
   const error =
     document.getElementById("profileError");
 
+
   if(!currentRole){
 
     error.textContent =
       "Please select your current leadership level.";
 
     return;
+
   }
+
 
   if(!targetRole){
 
@@ -1667,7 +1682,9 @@ function beginDynamicAssessment(){
       "Please select your target leadership level.";
 
     return;
+
   }
+
 
   if(!primaryChallenge){
 
@@ -1675,22 +1692,29 @@ function beginDynamicAssessment(){
       "Please select what matters most right now.";
 
     return;
+
   }
+
 
   error.textContent = "";
 
+
   buildQuestions();
+
 
   currentQuestion = 0;
 
+
   showScreen("assessment");
 
+
   renderQuestion();
+
 }
 
 
 /* =========================================================
-   QUESTION
+   RENDER QUESTION
 ========================================================= */
 
 function renderQuestion(){
@@ -1698,54 +1722,66 @@ function renderQuestion(){
   const q =
     questions[currentQuestion];
 
+
   const total =
     questions.length;
+
 
   const percent =
     Math.round(
       ((currentQuestion + 1) / total) * 100
     );
 
+
   document.getElementById(
     "questionCounter"
   ).textContent =
     `Question ${currentQuestion + 1} of ${total}`;
+
 
   document.getElementById(
     "questionPercent"
   ).textContent =
     `${percent}%`;
 
+
   document.getElementById(
     "progressBar"
   ).style.width =
     `${percent}%`;
+
 
   document.getElementById(
     "questionCategory"
   ).textContent =
     q.category;
 
+
   document.getElementById(
     "questionText"
   ).textContent =
     q.text;
 
+
   const container =
     document.getElementById("options");
 
+
   container.innerHTML = "";
+
 
   q.options.forEach((option,index) => {
 
     const button =
       document.createElement("button");
 
+
     button.type = "button";
 
     button.className = "option";
 
     button.textContent = option[0];
+
 
     if(
       answers[currentQuestion] === index
@@ -1755,16 +1791,20 @@ function renderQuestion(){
 
     }
 
+
     button.onclick = () =>
       selectAnswer(index);
+
 
     container.appendChild(button);
 
   });
 
+
   document.getElementById(
     "errorMessage"
   ).textContent = "";
+
 
   document.getElementById(
     "backButton"
@@ -1777,12 +1817,13 @@ function renderQuestion(){
 
 
 /* =========================================================
-   SELECT
+   SELECT ANSWER
 ========================================================= */
 
 function selectAnswer(index){
 
   answers[currentQuestion] = index;
+
 
   document
     .querySelectorAll(".option")
@@ -1799,7 +1840,7 @@ function selectAnswer(index){
 
 
 /* =========================================================
-   NEXT
+   NEXT QUESTION
 ========================================================= */
 
 function nextQuestion(){
@@ -1814,7 +1855,9 @@ function nextQuestion(){
       "Please select an answer before continuing.";
 
     return;
+
   }
+
 
   if(
     currentQuestion <
@@ -1825,7 +1868,8 @@ function nextQuestion(){
 
     renderQuestion();
 
-  }else{
+  }
+  else{
 
     showScreen("leadCapture");
 
@@ -1852,16 +1896,20 @@ function previousQuestion(){
 
 
 /* =========================================================
-   CALCULATE
+   EXECUTIVE READINESS ENGINE
 ========================================================= */
 
 function calculateResult(){
 
-  const weights = getWeights();
+  const weights =
+    getWeights();
+
 
   const resultDimensions = {};
 
+
   let weightedTotal = 0;
+
   let totalWeight = 0;
 
 
@@ -1870,25 +1918,39 @@ function calculateResult(){
     const answerIndex =
       answers[index];
 
+
+    if(
+      answerIndex === null ||
+      answerIndex === undefined
+    ){
+
+      return;
+
+    }
+
+
     const value =
-      q.options[
-        answerIndex
-      ][1];
+      q.options[answerIndex][1];
+
 
     const percentage =
       Math.round(
         (value / 4) * 100
       );
 
+
     resultDimensions[
       q.dimension
     ] = percentage;
 
+
     const weight =
       weights[q.dimension] || 1;
 
+
     weightedTotal +=
       value * weight;
+
 
     totalWeight +=
       4 * weight;
@@ -1902,32 +1964,78 @@ function calculateResult(){
     );
 
 
+  /* PROFILE */
+
   let profile;
+  let readinessMessage;
+  let riskLevel;
+
 
   if(score >= 85){
 
     profile =
-      "Strong Next-Level Readiness";
+      "Next-Level Executive Ready";
 
-  }else if(score >= 70){
+    readinessMessage =
+      "Your leadership signals indicate strong readiness for the next level. The priority now is converting capability into greater enterprise influence, visibility and strategic positioning.";
 
-    profile =
-      "Emerging Next-Level Readiness";
+    riskLevel =
+      "Low";
 
-  }else if(score >= 55){
-
-    profile =
-      "Transition Development Stage";
-
-  }else{
+  }
+  else if(score >= 75){
 
     profile =
-      "Leadership Foundation Building";
+      "Strong Emerging Readiness";
+
+    readinessMessage =
+      "You demonstrate many of the signals required for your target role. The next step is strengthening the few dimensions that could prevent senior decision-makers from fully recognizing your readiness.";
+
+    riskLevel =
+      "Moderate-Low";
+
+  }
+  else if(score >= 65){
+
+    profile =
+      "Transition-Ready With Gaps";
+
+    readinessMessage =
+      "You have meaningful leadership capability, but several signals are not yet consistently communicating next-level readiness. Focused development can materially improve your transition probability.";
+
+    riskLevel =
+      "Moderate";
+
+  }
+  else if(score >= 50){
+
+    profile =
+      "Development Before Transition";
+
+    readinessMessage =
+      "Your leadership foundation is developing, but moving into the target role would require stronger evidence of strategic scope, influence, visibility and business impact.";
+
+    riskLevel =
+      "High";
+
+  }
+  else{
+
+    profile =
+      "Leadership Foundation Gap";
+
+    readinessMessage =
+      "Your current leadership signals suggest that strengthening the fundamentals should come before making the next-level transition.";
+
+    riskLevel =
+      "High";
 
   }
 
 
-  const sorted =
+  /* SORT DIMENSIONS */
+
+  const sortedDimensions =
     Object.entries(
       resultDimensions
     ).sort(
@@ -1935,11 +2043,240 @@ function calculateResult(){
     );
 
 
-  const lowest =
-    sorted[0];
+  const weakest =
+    sortedDimensions[0];
 
-  const highest =
-    sorted[sorted.length - 1];
+
+  const secondWeakest =
+    sortedDimensions[1];
+
+
+  const strongest =
+    sortedDimensions[
+      sortedDimensions.length - 1
+    ];
+
+
+  /* TRANSITION RISK */
+
+  let transitionRisk = "";
+
+
+  if(targetRole === "Director"){
+
+    if(
+      (resultDimensions["Leadership Scale"] || 0) < 65 ||
+      (resultDimensions["Executive Influence"] || 0) < 65
+    ){
+
+      transitionRisk =
+        "Your biggest transition risk is demonstrating leadership beyond your immediate operational scope.";
+
+    }
+    else{
+
+      transitionRisk =
+        "Your profile shows a solid foundation for moving into broader leadership responsibility.";
+
+    }
+
+  }
+
+
+  if(targetRole === "VP"){
+
+    if(
+      (resultDimensions["Strategic Scope"] || 0) < 70 ||
+      (resultDimensions["Executive Visibility"] || 0) < 70
+    ){
+
+      transitionRisk =
+        "Your biggest VP transition risk is that your strategic contribution may not yet be visible enough to senior decision-makers.";
+
+    }
+    else{
+
+      transitionRisk =
+        "Your profile shows several strong signals associated with VP-level leadership.";
+
+    }
+
+  }
+
+
+  if(targetRole === "SVP / Business Head"){
+
+    if(
+      (resultDimensions["Enterprise Thinking"] || 0) < 70 ||
+      (resultDimensions["Business Impact"] || 0) < 70 ||
+      (resultDimensions["Leadership Scale"] || 0) < 70
+    ){
+
+      transitionRisk =
+        "Your biggest transition risk is demonstrating enterprise-wide ownership rather than strong functional leadership alone.";
+
+    }
+    else{
+
+      transitionRisk =
+        "Your profile demonstrates several signals associated with enterprise-scale leadership.";
+
+    }
+
+  }
+
+
+  if(targetRole === "CXO"){
+
+    if(
+      (resultDimensions["Enterprise Thinking"] || 0) < 75 ||
+      (resultDimensions["Business Impact"] || 0) < 75 ||
+      (resultDimensions["Leadership Positioning"] || 0) < 70
+    ){
+
+      transitionRisk =
+        "Your biggest CXO transition risk is enterprise positioning: demonstrating that you can think, influence and operate beyond functional boundaries.";
+
+    }
+    else{
+
+      transitionRisk =
+        "Your profile contains several strong CXO-readiness signals, particularly around enterprise leadership and business ownership.";
+
+    }
+
+  }
+
+
+  /* FOCUS MAP */
+
+  const focusMap = {
+
+    "Strategic Scope":
+      "Move from functional execution toward enterprise-level strategic ownership.",
+
+    "Business Impact":
+      "Make your leadership contribution more measurable and directly connected to business outcomes.",
+
+    "Executive Influence":
+      "Strengthen your ability to influence senior stakeholders without relying on formal authority.",
+
+    "Executive Presence":
+      "Strengthen how you communicate, challenge, influence and represent yourself in high-stakes executive situations.",
+
+    "Executive Visibility":
+      "Increase the visibility of your strategic contribution with the people who influence senior-career decisions.",
+
+    "Enterprise Thinking":
+      "Demonstrate broader organizational thinking beyond your immediate function or business unit.",
+
+    "Leadership Scale":
+      "Expand the evidence that you can lead through greater complexity, scale and organizational responsibility.",
+
+    "Leadership Positioning":
+      "Clarify and communicate the strategic leadership value you bring so others can recognize your next-level potential.",
+
+    "Stakeholder Intelligence":
+      "Become more deliberate in navigating competing priorities, organizational dynamics and senior stakeholder expectations.",
+
+    "Career Readiness":
+      "Build stronger evidence and positioning that communicates readiness for your target leadership level."
+
+  };
+
+
+  const focusTitle =
+    weakest[0];
+
+
+  const focusText =
+    focusMap[focusTitle] ||
+    "Strengthen the leadership signal associated with your most important development gap.";
+
+
+  /* STRENGTH */
+
+  const strengthMessages = {
+
+    "Strategic Scope":
+      "You demonstrate strong strategic thinking beyond immediate operational responsibilities.",
+
+    "Business Impact":
+      "You appear effective at connecting leadership activity with meaningful business outcomes.",
+
+    "Executive Influence":
+      "Your ability to influence stakeholders is one of the stronger signals in your current profile.",
+
+    "Executive Presence":
+      "You demonstrate confidence and credibility in senior-level leadership situations.",
+
+    "Executive Visibility":
+      "Your leadership contribution appears relatively visible to senior decision-makers.",
+
+    "Enterprise Thinking":
+      "You demonstrate an ability to think beyond your immediate function and consider the wider organization.",
+
+    "Leadership Scale":
+      "Your experience suggests meaningful progression in leadership responsibility and organizational scale.",
+
+    "Leadership Positioning":
+      "You appear increasingly recognized for the strategic value you bring as a leader.",
+
+    "Stakeholder Intelligence":
+      "You demonstrate strong awareness of stakeholder dynamics and organizational complexity.",
+
+    "Career Readiness":
+      "Your profile communicates meaningful evidence of readiness for greater leadership responsibility."
+
+  };
+
+
+  const strengthText =
+    strengthMessages[strongest[0]] ||
+    "Your strongest leadership dimension provides a useful foundation for your next transition.";
+
+
+  /* OPPORTUNITY */
+
+  const opportunityTitle =
+    `Strengthen ${weakest[0]}`;
+
+
+  const opportunityText =
+    `${strongest[0]} is currently your strongest leadership signal at ${strongest[1]}/100. ` +
+    `Your highest-leverage opportunity is ${weakest[0]} at ${weakest[1]}/100. ` +
+    `For a move toward ${targetRole}, strengthening this area can materially improve how your leadership readiness is perceived.`;
+
+
+  /* COACHING MESSAGE */
+
+  let coachingMessage = "";
+
+
+  if(score >= 85){
+
+    coachingMessage =
+      "You may not need more capability as much as you need sharper executive positioning, visibility and strategic leverage.";
+
+  }
+  else if(score >= 75){
+
+    coachingMessage =
+      "You are approaching the next level. The opportunity is to close the few leadership-signal gaps that could slow your transition.";
+
+  }
+  else if(score >= 65){
+
+    coachingMessage =
+      "You have a credible foundation. A focused 90-day leadership development plan can help convert capability into stronger executive evidence.";
+
+  }
+  else{
+
+    coachingMessage =
+      "The priority should be strengthening the leadership foundation that your target role will require before aggressively pursuing the transition.";
+
+  }
 
 
   return {
@@ -1948,34 +2285,54 @@ function calculateResult(){
 
     profile,
 
+    riskLevel,
+
+    readinessMessage,
+
+    transitionRisk,
+
+    coachingMessage,
+
     dimensions:
       resultDimensions,
 
-    opportunityTitle:
-      lowest[0],
+    strongestDimension:
+      strongest[0],
 
-    opportunityText:
-      `Your strongest signal is ${
-        highest[0]
-      } at ${
-        highest[1]
-      }/100. Your highest-leverage development opportunity is ${
-        lowest[0]
-      } at ${
-        lowest[1]
-      }/100. Strengthening this area can help your leadership profile communicate more effectively for the move toward ${
-        targetRole
-      }.`,
+    strongestScore:
+      strongest[1],
 
+    weakestDimension:
+      weakest[0],
 
-    focusTitle:
-      lowest[0],
+    weakestScore:
+      weakest[1],
 
-    focusText:
-      `Use the next 90 days to deliberately strengthen ${
-        lowest[0].toLowerCase()
-      } through visible business impact, stakeholder influence,
-      strategic leadership opportunities and deliberate executive positioning.`
+    secondWeakestDimension:
+      secondWeakest
+        ? secondWeakest[0]
+        : "",
+
+    secondWeakestScore:
+      secondWeakest
+        ? secondWeakest[1]
+        : "",
+
+    opportunityTitle,
+
+    opportunityText,
+
+    strengthText,
+
+    focusTitle,
+
+    focusText,
+
+    transition:
+      `${currentRole} → ${targetRole}`,
+
+    challenge:
+      primaryChallenge
 
   };
 
@@ -1993,27 +2350,32 @@ async function submitLead(event){
 
   const name =
     document.getElementById("name")
-    .value.trim();
+      .value.trim();
+
 
   const email =
     document.getElementById("email")
-    .value.trim();
+      .value.trim();
+
 
   const country =
     document.getElementById("country")
-    .value;
+      .value;
+
 
   const phone =
     document.getElementById("phone")
-    .value.trim();
+      .value.trim();
+
 
   const linkedin =
     document.getElementById("linkedin")
-    .value.trim();
+      .value.trim();
+
 
   const consent =
     document.getElementById("consent")
-    .checked;
+      .checked;
 
 
   if(!name){
@@ -2021,28 +2383,36 @@ async function submitLead(event){
     alert("Please enter your name.");
 
     return;
+
   }
+
 
   if(!email){
 
     alert("Please enter your email.");
 
     return;
+
   }
+
 
   if(!country){
 
     alert("Please select your country.");
 
     return;
+
   }
+
 
   if(!phone){
 
     alert("Please enter your phone number.");
 
     return;
+
   }
+
 
   if(!consent){
 
@@ -2051,6 +2421,7 @@ async function submitLead(event){
     );
 
     return;
+
   }
 
 
@@ -2060,6 +2431,7 @@ async function submitLead(event){
 
   const cleanPhone =
     phone.replace(/[^\d]/g,"");
+
 
   const fullPhone =
     `${country}${cleanPhone}`;
@@ -2074,6 +2446,7 @@ async function submitLead(event){
   const source =
     params.get("utm_source") ||
     "direct";
+
 
   const campaign =
     params.get("utm_campaign") ||
@@ -2108,7 +2481,7 @@ async function submitLead(event){
       `${currentRole} → ${targetRole}`,
 
     assessment_type:
-      "executive_readiness",
+      "executive_readiness_v2",
 
     score:
       result.score,
@@ -2116,8 +2489,44 @@ async function submitLead(event){
     profile:
       result.profile,
 
+    risk_level:
+      result.riskLevel,
+
+    readiness_message:
+      result.readinessMessage,
+
+    transition_risk:
+      result.transitionRisk,
+
+    strongest_dimension:
+      result.strongestDimension,
+
+    strongest_score:
+      result.strongestScore,
+
+    weakest_dimension:
+      result.weakestDimension,
+
+    weakest_score:
+      result.weakestScore,
+
+    second_weakest_dimension:
+      result.secondWeakestDimension,
+
+    second_weakest_score:
+      result.secondWeakestScore,
+
     dimensions:
       result.dimensions,
+
+    recommended_focus:
+      result.focusTitle,
+
+    recommended_focus_text:
+      result.focusText,
+
+    coaching_message:
+      result.coachingMessage,
 
     source,
 
@@ -2138,6 +2547,7 @@ async function submitLead(event){
 
   button.disabled = true;
 
+
   button.textContent =
     "Saving Your Report...";
 
@@ -2157,18 +2567,21 @@ async function submitLead(event){
 
           body:
             JSON.stringify(payload)
+
         }
       );
 
 
     let data;
 
+
     try{
 
       data =
         await response.json();
 
-    }catch{
+    }
+    catch{
 
       throw new Error(
         "The server returned an invalid response."
@@ -2187,6 +2600,7 @@ async function submitLead(event){
         data
       );
 
+
       throw new Error(
         data.error ||
         "Unable to save your assessment."
@@ -2195,10 +2609,14 @@ async function submitLead(event){
     }
 
 
-    localStorage.setItem(
-      "riseLeadLastProspectId",
-      data.id
-    );
+    if(data.id){
+
+      localStorage.setItem(
+        "riseLeadLastProspectId",
+        data.id
+      );
+
+    }
 
 
     lastResult =
@@ -2207,21 +2625,25 @@ async function submitLead(event){
 
     renderReport(result);
 
+
     showScreen("report");
 
 
-  }catch(error){
+  }
+  catch(error){
 
     console.error(
       "Submission error:",
       error
     );
 
+
     alert(
       "We couldn't save your assessment right now. Please try again."
     );
 
-  }finally{
+  }
+  finally{
 
     button.disabled = false;
 
@@ -2252,6 +2674,12 @@ function renderReport(result){
 
 
   document.getElementById(
+    "readinessMessage"
+  ).textContent =
+    result.readinessMessage;
+
+
+  document.getElementById(
     "transitionLabel"
   ).textContent =
     `${currentRole} → ${targetRole} • ${primaryChallenge}`;
@@ -2270,6 +2698,18 @@ function renderReport(result){
 
 
   document.getElementById(
+    "strengthText"
+  ).textContent =
+    result.strengthText;
+
+
+  document.getElementById(
+    "transitionRisk"
+  ).textContent =
+    result.transitionRisk;
+
+
+  document.getElementById(
     "focusTitle"
   ).textContent =
     result.focusTitle;
@@ -2279,6 +2719,12 @@ function renderReport(result){
     "focusText"
   ).textContent =
     result.focusText;
+
+
+  document.getElementById(
+    "coachingMessage"
+  ).textContent =
+    result.coachingMessage;
 
 
   const metrics =
@@ -2361,9 +2807,23 @@ function restart(){
 
   answers = [];
 
+  lastResult = null;
+
+
   document
     .getElementById("leadForm")
     .reset();
+
+
+  document.getElementById(
+    "selectionSummary"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "profileError"
+  ).textContent = "";
+
 
   showScreen("landing");
 
@@ -2408,3 +2868,4 @@ document.addEventListener(
 
 </body>
 </html>
+```
