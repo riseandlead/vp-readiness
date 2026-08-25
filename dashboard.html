@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rise&Lead — Executive Intelligence</title>
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --dark: #111827;
+      --blue: #2563eb;
+      --green: #15803d;
+      --yellow: #b45309;
+      --red: #b91c1c;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .topbar {
+      height: 72px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 28px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--text);
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-weight: 700;
+    }
+
+    .btn:hover {
+      background: #f8fafc;
+    }
+
+    .btn.primary {
+      background: var(--dark);
+      color: white;
+      border-color: var(--dark);
+    }
+
+    .container {
+      max-width: 1450px;
+      margin: auto;
+      padding: 28px;
+    }
+
+    .hero {
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: -0.8px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-top: 7px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .stat-value {
+      margin-top: 5px;
+      font-size: 28px;
+      font-weight: 850;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    .search {
+      flex: 1;
+      min-width: 280px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      outline: none;
+    }
+
+    .search:focus {
+      border-color: #94a3b8;
+    }
+
+    select {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: white;
+    }
+
+    .error {
+      display: none;
+      background: #fee2e2;
+      color: var(--red);
+      border-radius: 10px;
+      padding: 13px;
+      margin-bottom: 16px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 430px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .list-panel {
+      overflow: hidden;
+    }
+
+    .list-header {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .list-count {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .prospect-list {
+      max-height: calc(100vh - 280px);
+      overflow-y: auto;
+    }
+
+    .prospect {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      transition: 0.15s;
+      cursor: pointer;
+    }
+
+    .prospect:hover {
+      background: #f8fafc;
+    }
+
+    .prospect.active {
+      background: #f1f5f9;
+      border-left: 3px solid var(--blue);
+      padding-left: 15px;
+    }
+
+    .prospect-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .prospect-name {
+      font-weight: 800;
+    }
+
+    .prospect-email {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 3px;
+      overflow-wrap: anywhere;
+    }
+
+    .score {
+      min-width: 48px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .score.high {
+      background: #dcfce7;
+      color: var(--green);
+    }
+
+    .score.medium {
+      background: #fef3c7;
+      color: var(--yellow);
+    }
+
+    .score.low {
+      background: #fee2e2;
+      color: var(--red);
+    }
+
+    .tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      background: white;
+      color: #475569;
+      padding: 4px 7px;
+      border-radius: 7px;
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .detail {
+      min-height: 600px;
+      padding: 22px;
+    }
+
+    .empty {
+      min-height: 540px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    .detail-name {
+      font-size: 28px;
+      font-weight: 850;
+      letter-spacing: -0.6px;
+    }
+
+    .detail-email {
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .score-big {
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1;
+      text-align: right;
+    }
+
+    .priority {
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 900;
+      text-align: right;
+    }
+
+    .section {
+      padding-top: 22px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 850;
+      margin-bottom: 12px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .info {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 12px;
+    }
+
+    .info-label {
+      color: var(--muted);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 850;
+    }
+
+    .info-value {
+      margin-top: 5px;
+      font-size: 13px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .insights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .insight {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 15px;
+    }
+
+    .insight-label {
+      color: var(--muted);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 850;
+    }
+
+    .insight-value {
+      margin-top: 7px;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .dimension {
+      display: grid;
+      grid-template-columns: 190px 1fr 45px;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .dimension-name {
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .bar {
+      height: 9px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #334155;
+      border-radius: 999px;
+    }
+
+    .dimension-score {
+      text-align: right;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .recommendation {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      line-height: 1.55;
+      font-size: 13px;
+    }
+
+    .loading {
+      padding: 35px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .linkedin-link {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    @media (max-width: 1050px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .prospect-list {
+        max-height: 450px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .topbar {
+        padding: 0 16px;
+      }
+
+      .container {
+        padding: 18px 14px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .detail-header {
+        flex-direction: column;
+      }
+
+      .score-big,
+      .priority {
+        text-align: left;
+      }
+
+      .info-grid,
+      .insights {
+        grid-template-columns: 1fr;
+      }
+
+      .dimension {
+        grid-template-columns: 125px 1fr 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      Rise&Lead <span>Executive Intelligence</span>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn" id="refreshBtn">Refresh</button>
+      <button class="btn primary" id="apiBtn">Open API</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <div class="eyebrow">Prospect Intelligence</div>
+
+      <h1>Executive Opportunity Dashboard</h1>
+
+      <p class="subtitle">
+        Review leadership readiness, capability gaps and coaching opportunities.
+      </p>
+    </section>
+
+    <section class="stats">
+
+      <div class="stat">
+        <div class="stat-label">TOTAL PROSPECTS</div>
+        <div class="stat-value" id="totalStat">—</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">HIGH PRIORITY</div>
+        <div class="stat-value" id="highStat">—</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">AVERAGE SCORE</div>
+        <div class="stat-value" id="averageStat">—</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">NEW</div>
+        <div class="stat-value" id="newStat">—</div>
+      </div>
+
+    </section>
+
+    <section class="toolbar">
+
+      <input
+        id="searchInput"
+        class="search"
+        type="search"
+        placeholder="Search name, email, role, challenge..."
+      />
+
+      <select id="scoreFilter">
+        <option value="all">All scores</option>
+        <option value="high">80–100</option>
+        <option value="medium">60–79</option>
+        <option value="low">0–59</option>
+      </select>
+
+      <select id="statusFilter">
+        <option value="all">All status</option>
+        <option value="NEW">NEW</option>
+        <option value="CONTACTED">CONTACTED</option>
+        <option value="QUALIFIED">QUALIFIED</option>
+        <option value="CONVERTED">CONVERTED</option>
+      </select>
+
+    </section>
+
+    <div id="errorBox" class="error"></div>
+
+    <section class="layout">
+
+      <div class="panel list-panel">
+
+        <div class="list-header">
+          <strong>Prospects</strong>
+          <span class="list-count" id="listCount">0</span>
+        </div>
+
+        <div id="prospectList" class="prospect-list">
+          <div class="loading">
+            Loading prospects...
+          </div>
+        </div>
+
+      </div>
+
+      <div class="panel detail" id="detailPanel">
+
+        <div class="empty">
+
+          <div>
+            <strong>Select a prospect</strong>
+
+            <p>
+              Click a prospect to view the complete assessment.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="dashboard.js"></script>
+
+</body>
+</html>
