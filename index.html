@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rise&Lead — VP Readiness Assessment</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background: #f6f7fb;
+    color: #172033;
+  }
+
+  button,
+  input {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  .app {
+    min-height: 100vh;
+  }
+
+  header {
+    padding: 24px 7%;
+    background: #ffffff;
+    border-bottom: 1px solid #e8eaf0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .brand span {
+    font-weight: 500;
+    color: #697386;
+  }
+
+  .badge {
+    font-size: 12px;
+    font-weight: 700;
+    background: #eef2ff;
+    color: #3949ab;
+    padding: 8px 12px;
+    border-radius: 999px;
+  }
+
+  main {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  .screen {
+    display: none;
+  }
+
+  .screen.active {
+    display: block;
+  }
+
+  .hero {
+    text-align: center;
+    max-width: 800px;
+    margin: 40px auto 0;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    color: #5b67d8;
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -3px;
+    margin: 0 0 22px;
+  }
+
+  h2 {
+    font-size: 34px;
+    letter-spacing: -1px;
+    margin: 0 0 14px;
+  }
+
+  h3 {
+    margin: 0 0 8px;
+  }
+
+  .hero p {
+    font-size: 19px;
+    line-height: 1.7;
+    color: #626c7e;
+    max-width: 720px;
+    margin: 0 auto 30px;
+  }
+
+  .primary {
+    border: 0;
+    border-radius: 12px;
+    background: #182033;
+    color: white;
+    padding: 16px 25px;
+    font-weight: 800;
+    font-size: 16px;
+    transition: transform .15s ease, opacity .15s ease;
+  }
+
+  .primary:hover {
+    transform: translateY(-1px);
+    opacity: .94;
+  }
+
+  .secondary {
+    border: 1px solid #d9dce5;
+    border-radius: 12px;
+    background: white;
+    color: #182033;
+    padding: 14px 22px;
+    font-weight: 700;
+  }
+
+  .trust {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    color: #697386;
+    font-size: 13px;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 70px;
+  }
+
+  .step {
+    background: white;
+    border: 1px solid #e5e7ed;
+    border-radius: 18px;
+    padding: 25px;
+  }
+
+  .step-number {
+    color: #5b67d8;
+    font-size: 12px;
+    font-weight: 900;
+    margin-bottom: 16px;
+  }
+
+  .step p {
+    color: #697386;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .assessment {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #697386;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .progress {
+    height: 7px;
+    background: #e6e8ef;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 45px;
+  }
+
+  .progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #5b67d8;
+    transition: width .25s ease;
+  }
+
+  .question-card {
+    background: white;
+    border: 1px solid #e2e5ec;
+    border-radius: 22px;
+    padding: 38px;
+    box-shadow: 0 12px 35px rgba(20, 28, 50, .06);
+  }
+
+  .question-category {
+    color: #5b67d8;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 13px;
+  }
+
+  .question {
+    font-size: 29px;
+    line-height: 1.25;
+    letter-spacing: -.8px;
+    margin-bottom: 28px;
+  }
+
+  .options {
+    display: grid;
+    gap: 12px;
+  }
+
+  .option {
+    width: 100%;
+    text-align: left;
+    padding: 17px 18px;
+    background: white;
+    border: 1px solid #dfe2e9;
+    border-radius: 13px;
+    color: #273047;
+    font-weight: 650;
+    transition: all .15s ease;
+  }
+
+  .option:hover {
+    border-color: #7b84df;
+    background: #f8f8ff;
+  }
+
+  .option.selected {
+    border-color: #5b67d8;
+    background: #eef0ff;
+    box-shadow: 0 0 0 2px rgba(91,103,216,.12);
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+
+  .error {
+    color: #c0392b;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 14px;
+    min-height: 18px;
+  }
+
+  .form-card {
+    max-width: 650px;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid #e2e5ec;
+    border-radius: 22px;
+    padding: 38px;
+  }
+
+  .form-card p {
+    color: #697386;
+    line-height: 1.65;
+  }
+
+  label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  input {
+    width: 100%;
+    border: 1px solid #d9dce5;
+    border-radius: 11px;
+    padding: 14px;
+    outline: none;
+  }
+
+  input:focus {
+    border-color: #5b67d8;
+    box-shadow: 0 0 0 3px rgba(91,103,216,.1);
+  }
+
+  .report {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .score-card {
+    background: #182033;
+    color: white;
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .score {
+    font-size: 78px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -4px;
+  }
+
+  .score-label {
+    margin-top: 10px;
+    color: #cbd1df;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 12px;
+  }
+
+  .profile {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.1);
+    font-weight: 800;
+  }
+
+  .report-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .report-card {
+    background: white;
+    border: 1px solid #e2e5ec;
+    border-radius: 18px;
+    padding: 25px;
+  }
+
+  .metric {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 800;
+  }
+
+  .metric-bar {
+    height: 7px;
+    background: #e9ebf1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+
+  .metric-fill {
+    height: 100%;
+    background: #5b67d8;
+  }
+
+  .report-card p {
+    color: #697386;
+    line-height: 1.65;
+  }
+
+  .cta {
+    margin-top: 22px;
+    background: #eef0ff;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .cta p {
+    color: #596277;
+    line-height: 1.65;
+    max-width: 650px;
+    margin: 10px auto 20px;
+  }
+
+  .admin {
+    margin-top: 50px;
+  }
+
+  .admin-card {
+    background: white;
+    border: 1px solid #e2e5ec;
+    border-radius: 18px;
+    padding: 25px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 13px;
+  }
+
+  th, td {
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eceef3;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: #8a92a3;
+    font-size: 13px;
+  }
+
+  @media(max-width: 700px) {
+    header {
+      padding: 18px 20px;
+    }
+
+    main {
+      padding: 35px 18px;
+    }
+
+    .steps,
+    .report-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .question-card,
+    .form-card,
+    .score-card {
+      padding: 25px;
+    }
+
+    h1 {
+      letter-spacing: -2px;
+    }
+
+    .question {
+      font-size: 24px;
+    }
+
+    .navigation {
+      gap: 10px;
+    }
+
+    .navigation button {
+      flex: 1;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+  <div class="brand">Rise&Lead <span>Executive Leadership Intelligence</span></div>
+  <div class="badge">FREE • 3 MINUTES</div>
+</header>
+
+<main>
+
+<!-- LANDING -->
+<section id="landing" class="screen active">
+
+  <div class="hero">
+
+    <div class="eyebrow">PERSONALIZED VP READINESS ASSESSMENT</div>
+
+    <h1>Are you ready for the move from Director → VP?</h1>
+
+    <p>
+      Your experience may already be strong enough for the next level.
+      The question is whether your leadership signal, strategic influence
+      and executive positioning communicate it.
+    </p>
+
+    <button class="primary" onclick="startAssessment()">
+      Start My VP Readiness Assessment →
+    </button>
+
+    <div class="trust">
+      <span>✓ No obligation</span>
+      <span>✓ Personalized score</span>
+      <span>✓ Built for experienced leaders</span>
+    </div>
+
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-number">01</div>
+      <h3>Assess</h3>
+      <p>Evaluate the leadership signals that matter at VP level.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">02</div>
+      <h3>Identify</h3>
+      <p>See your strongest areas and highest-leverage gaps.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">03</div>
+      <h3>Act</h3>
+      <p>Get a practical next-step recommendation for the next 90 days.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ASSESSMENT -->
+<section id="assessment" class="screen">
+
+  <div class="assessment">
+
+    <div class="topline">
+      <span id="questionCounter">Question 1 of 8</span>
+      <span id="questionPercent">13%</span>
+    </div>
+
+    <div class="progress">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div class="question-card">
+
+      <div id="questionCategory" class="question-category"></div>
+
+      <div id="questionText" class="question"></div>
+
+      <div id="options" class="options"></div>
+
+      <div id="errorMessage" class="error"></div>
+
+      <div class="navigation">
+        <button id="backButton" class="secondary" onclick="previousQuestion()">
+          ← Back
+        </button>
+
+        <button class="primary" onclick="nextQuestion()">
+          Continue →
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- LEAD CAPTURE -->
+<section id="leadCapture" class="screen">
+
+  <div class="form-card">
+
+    <div class="eyebrow">YOUR ASSESSMENT IS READY</div>
+
+    <h2>Where should we send your VP Readiness Report?</h2>
+
+    <p>
+      We'll use your answers to generate your readiness score,
+      leadership gaps and recommended next step.
+    </p>
+
+    <form id="leadForm" onsubmit="submitLead(event)">
+
+      <label for="name">Name *</label>
+      <input id="name" required placeholder="Your full name">
+
+      <label for="email">Email *</label>
+      <input id="email" type="email" required placeholder="you@example.com">
+
+      <label for="phone">WhatsApp / Phone</label>
+      <input id="phone" placeholder="+91...">
+
+      <label for="linkedin">LinkedIn URL</label>
+      <input id="linkedin" placeholder="https://linkedin.com/in/...">
+
+      <label style="display:flex;align-items:center;gap:8px;font-weight:600;">
+        <input id="consent" type="checkbox" style="width:auto;" required>
+        I agree to receive my assessment and relevant Rise&Lead information.
+      </label>
+
+      <button class="primary" style="width:100%;margin-top:24px;">
+        Generate My Report →
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- REPORT -->
+<section id="report" class="screen">
+
+  <div class="report">
+
+    <div class="score-card">
+
+      <div class="eyebrow" style="color:#b9c0ff;">YOUR VP READINESS REPORT</div>
+
+      <div id="scoreValue" class="score">0</div>
+
+      <div class="score-label">VP READINESS</div>
+
+      <div id="profileLabel" class="profile"></div>
+
+    </div>
+
+    <div class="report-grid">
+
+      <div class="report-card">
+        <h3>Leadership Dimensions</h3>
+        <br>
+
+        <div id="metrics"></div>
+      </div>
+
+      <div class="report-card">
+
+        <div class="eyebrow">PRIMARY OPPORTUNITY</div>
+
+        <h2 id="opportunityTitle"></h2>
+
+        <p id="opportunityText"></p>
+
+        <div class="eyebrow" style="margin-top:25px;">
+          RECOMMENDED FOCUS
+        </div>
+
+        <h3 id="focusTitle"></h3>
+
+        <p id="focusText"></p>
+
+      </div>
+
+    </div>
+
+    <div class="cta">
+
+      <h2>Your Next Move</h2>
+
+      <p>
+        Turn the score into a practical leadership plan.
+        A short conversation can help translate your assessment
+        into a focused 90-day executive growth priority.
+      </p>
+
+      <button class="primary" onclick="bookCall()">
+        15-Minute Executive Growth Conversation →
+      </button>
+
+      <br><br>
+
+      <button class="secondary" onclick="restart()">
+        Take Assessment Again
+      </button>
+
+    </div>
+
+    <div class="admin">
+
+      <div class="admin-card">
+
+        <h3>LOCAL DEMO CRM</h3>
+
+        <p>
+          Captured prospects are stored in this browser only.
+          Connect a real database/CRM before production.
+        </p>
+
+        <button class="secondary" onclick="exportCSV()">
+          Export CSV
+        </button>
+
+        <div id="crmTable"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  Rise&Lead • Build demand. Capture intent. Create qualified conversations.
+</footer>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+  {
+    category: "STRATEGIC SCOPE",
+    text: "How often are you involved in decisions that affect the wider business beyond your immediate function?",
+    dimension: "Strategic Scope",
+    options: [
+      ["Mostly within my own function", 1],
+      ["Occasionally across functions", 2],
+      ["Frequently across multiple functions", 3],
+      ["I regularly influence enterprise-level decisions", 4]
+    ]
+  },
+
+  {
+    category: "BUSINESS IMPACT",
+    text: "How clearly can you connect your leadership work to measurable business outcomes?",
+    dimension: "Business Impact",
+    options: [
+      ["Mostly through operational metrics", 1],
+      ["I can explain some business impact", 2],
+      ["I regularly connect work to business outcomes", 3],
+      ["I directly influence major business outcomes", 4]
+    ]
+  },
+
+  {
+    category: "EXECUTIVE INFLUENCE",
+    text: "How effectively can you influence senior stakeholders when you do not have direct authority over them?",
+    dimension: "Executive Influence",
+    options: [
+      ["This is still difficult for me", 1],
+      ["I can do it in familiar situations", 2],
+      ["I am effective with most senior stakeholders", 3],
+      ["I consistently influence complex senior decisions", 4]
+    ]
+  },
+
+  {
+    category: "VISIBILITY",
+    text: "How visible is your leadership contribution to senior executives in your organization?",
+    dimension: "Executive Visibility",
+    options: [
+      ["Mostly visible only within my team", 1],
+      ["Visible to some senior leaders", 2],
+      ["Regularly visible to senior leadership", 3],
+      ["My strategic contribution is highly visible", 4]
+    ]
+  },
+
+  {
+    category: "ENTERPRISE THINKING",
+    text: "When making important decisions, how often do you consider the impact across the entire organization?",
+    dimension: "Enterprise Thinking",
+    options: [
+      ["Primarily my function", 1],
+      ["My function plus adjacent teams", 2],
+      ["Multiple functions and stakeholders", 3],
+      ["The broader enterprise ecosystem", 4]
+    ]
+  },
+
+  {
+    category: "LEADERSHIP SCALE",
+    text: "How has the scale of your leadership responsibility evolved over the last few years?",
+    dimension: "Leadership Scale",
+    options: [
+      ["It has remained relatively stable", 1],
+      ["My responsibilities have grown somewhat", 2],
+      ["My scope has expanded significantly", 3],
+      ["I now operate at substantially greater organizational scale", 4]
+    ]
+  },
+
+  {
+    category: "EXECUTIVE POSITIONING",
+    text: "How clearly are you known for the strategic value you bring as a leader?",
+    dimension: "Executive Positioning",
+    options: [
+      ["I am mainly known for execution", 1],
+      ["My strategic contribution is becoming recognized", 2],
+      ["I am recognized as a strategic leader", 3],
+      ["I have a strong executive leadership reputation", 4]
+    ]
+  },
+
+  {
+    category: "VP READINESS",
+    text: "How confident are you that your current leadership profile communicates VP-level readiness?",
+    dimension: "VP Readiness",
+    options: [
+      ["Not very confident", 1],
+      ["Somewhat confident", 2],
+      ["Quite confident", 3],
+      ["Very confident", 4]
+    ]
+  }
+
+];
+
+
+let currentQuestion = 0;
+let answers = [];
+let lastResult = null;
+
+
+/* ---------- SCREEN CONTROL ---------- */
+
+function showScreen(id) {
+
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+
+  const target = document.getElementById(id);
+
+  if (!target) {
+    console.error("Screen not found:", id);
+    return;
+  }
+
+  target.classList.add("active");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+/* ---------- START ---------- */
+
+function startAssessment() {
+
+  currentQuestion = 0;
+
+  answers = new Array(questions.length).fill(null);
+
+  showScreen("assessment");
+
+  renderQuestion();
+
+}
+
+
+/* ---------- RENDER QUESTION ---------- */
+
+function renderQuestion() {
+
+  const q = questions[currentQuestion];
+
+  if (!q) {
+    console.error("Question not found:", currentQuestion);
+    return;
+  }
+
+  document.getElementById("questionCounter").textContent =
+    `Question ${currentQuestion + 1} of ${questions.length}`;
+
+  const percent =
+    Math.round(((currentQuestion + 1) / questions.length) * 100);
+
+  document.getElementById("questionPercent").textContent =
+    `${percent}%`;
+
+  document.getElementById("progressBar").style.width =
+    `${percent}%`;
+
+  document.getElementById("questionCategory").textContent =
+    q.category;
+
+  document.getElementById("questionText").textContent =
+    q.text;
+
+  const optionsContainer =
+    document.getElementById("options");
+
+  optionsContainer.innerHTML = "";
+
+  q.options.forEach((option, index) => {
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+
+    button.className = "option";
+
+    button.textContent = option[0];
+
+    if (answers[currentQuestion] === index) {
+      button.classList.add("selected");
+    }
+
+    button.addEventListener("click", function() {
+      selectAnswer(index);
+    });
+
+    optionsContainer.appendChild(button);
+
+  });
+
+  document.getElementById("errorMessage").textContent = "";
+
+  document.getElementById("backButton").style.visibility =
+    currentQuestion === 0 ? "hidden" : "visible";
+
+}
+
+
+/* ---------- SELECT ANSWER ---------- */
+
+function selectAnswer(index) {
+
+  answers[currentQuestion] = index;
+
+  document
+    .querySelectorAll(".option")
+    .forEach((button, i) => {
+
+      button.classList.toggle(
+        "selected",
+        i === index
+      );
+
+    });
+
+  document.getElementById("errorMessage").textContent = "";
+
+}
+
+
+/* ---------- NEXT ---------- */
+
+function nextQuestion() {
+
+  if (answers[currentQuestion] === null) {
+
+    document.getElementById("errorMessage").textContent =
+      "Please select an answer before continuing.";
+
+    return;
+  }
+
+  if (currentQuestion < questions.length - 1) {
+
+    currentQuestion++;
+
+    renderQuestion();
+
+  } else {
+
+    showScreen("leadCapture");
+
+  }
+
+}
+
+
+/* ---------- BACK ---------- */
+
+function previousQuestion() {
+
+  if (currentQuestion > 0) {
+
+    currentQuestion--;
+
+    renderQuestion();
+
+  }
+
+}
+
+
+/* ---------- SCORING ---------- */
+
+function calculateResult() {
+
+  const dimensionScores = {};
+
+  let total = 0;
+
+  questions.forEach((q, index) => {
+
+    const answerIndex = answers[index];
+
+    const value =
+      answerIndex === null
+        ? 0
+        : q.options[answerIndex][1];
+
+    dimensionScores[q.dimension] =
+      Math.round((value / 4) * 100);
+
+    total += value;
+
+  });
+
+  const score =
+    Math.round(
+      (total / (questions.length * 4)) * 100
+    );
+
+  let profile = "";
+
+  if (score >= 85) {
+    profile = "Strong VP Readiness";
+  } else if (score >= 70) {
+    profile = "Emerging VP Readiness";
+  } else if (score >= 55) {
+    profile = "VP Transition Stage";
+  } else {
+    profile = "Leadership Foundation Building";
+  }
+
+  const sorted =
+    Object.entries(dimensionScores)
+      .sort((a,b) => a[1] - b[1]);
+
+  const lowest = sorted[0];
+  const highest = sorted[sorted.length - 1];
+
+  let opportunityTitle =
+    lowest[0];
+
+  let opportunityText =
+    `Your strongest signal is ${highest[0]} at ${highest[1]}/100. ` +
+    `Your highest-leverage development opportunity is ${lowest[0]} at ${lowest[1]}/100. ` +
+    `Strengthening this area can help your leadership profile communicate more effectively at VP level.`;
+
+  let focusTitle =
+    lowest[0];
+
+  let focusText =
+    `Use the next 90 days to deliberately strengthen ${lowest[0].toLowerCase()} ` +
+    `through visible business impact, stakeholder influence and strategic leadership opportunities.`;
+
+  return {
+    score,
+    profile,
+    dimensions: dimensionScores,
+    opportunityTitle,
+    opportunityText,
+    focusTitle,
+    focusText
+  };
+
+}
+
+
+/* ---------- SUBMIT LEAD ---------- */
+
+function submitLead(event) {
+
+  event.preventDefault();
+
+  const result = calculateResult();
+
+  const lead = {
+
+    id: Date.now(),
+
+    name:
+      document.getElementById("name").value.trim(),
+
+    email:
+      document.getElementById("email").value.trim(),
+
+    phone:
+      document.getElementById("phone").value.trim(),
+
+    linkedin:
+      document.getElementById("linkedin").value.trim(),
+
+    score:
+      result.score,
+
+    profile:
+      result.profile,
+
+    dimensions:
+      result.dimensions,
+
+    createdAt:
+      new Date().toLocaleString()
+
+  };
+
+  const existing =
+    JSON.parse(
+      localStorage.getItem("riseLeadProspects") || "[]"
+    );
+
+  existing.push(lead);
+
+  localStorage.setItem(
+    "riseLeadProspects",
+    JSON.stringify(existing)
+  );
+
+  lastResult = result;
+
+  renderReport(result);
+
+  showScreen("report");
+
+}
+
+
+/* ---------- REPORT ---------- */
+
+function renderReport(result) {
+
+  document.getElementById("scoreValue").textContent =
+    result.score;
+
+  document.getElementById("profileLabel").textContent =
+    result.profile;
+
+  document.getElementById("opportunityTitle").textContent =
+    result.opportunityTitle;
+
+  document.getElementById("opportunityText").textContent =
+    result.opportunityText;
+
+  document.getElementById("focusTitle").textContent =
+    result.focusTitle;
+
+  document.getElementById("focusText").textContent =
+    result.focusText;
+
+  const metrics =
+    document.getElementById("metrics");
+
+  metrics.innerHTML = "";
+
+  Object.entries(result.dimensions).forEach(
+    ([name, value]) => {
+
+      const wrapper =
+        document.createElement("div");
+
+      wrapper.innerHTML = `
+
+        <div class="metric">
+          <span>${escapeHtml(name)}</span>
+          <span>${value}</span>
+        </div>
+
+        <div class="metric-bar">
+          <div
+            class="metric-fill"
+            style="width:${value}%"
+          ></div>
+        </div>
+
+      `;
+
+      metrics.appendChild(wrapper);
+
+    }
+  );
+
+  renderCRM();
+
+}
+
+
+/* ---------- CRM ---------- */
+
+function renderCRM() {
+
+  const leads =
+    JSON.parse(
+      localStorage.getItem("riseLeadProspects") || "[]"
+    );
+
+  const container =
+    document.getElementById("crmTable");
+
+  if (!leads.length) {
+
+    container.innerHTML =
+      "<p>No prospects captured yet.</p>";
+
+    return;
+
+  }
+
+  let html = `
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Score</th>
+          <th>Profile</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+  `;
+
+  leads.slice().reverse().forEach(lead => {
+
+    html += `
+
+      <tr>
+        <td>${escapeHtml(lead.name)}</td>
+        <td>${escapeHtml(lead.email)}</td>
+        <td><strong>${lead.score}</strong></td>
+        <td>${escapeHtml(lead.profile)}</td>
+        <td>${escapeHtml(lead.createdAt)}</td>
+      </tr>
+
+    `;
+
+  });
+
+  html += `
+      </tbody>
+    </table>
+  `;
+
+  container.innerHTML = html;
+
+}
+
+
+/* ---------- CSV ---------- */
+
+function exportCSV() {
+
+  const leads =
+    JSON.parse(
+      localStorage.getItem("riseLeadProspects") || "[]"
+    );
+
+  if (!leads.length) {
+
+    alert("No leads have been captured yet.");
+
+    return;
+
+  }
+
+  const rows = [
+
+    [
+      "Name",
+      "Email",
+      "Phone",
+      "LinkedIn",
+      "Score",
+      "Profile",
+      "Created"
+    ],
+
+    ...leads.map(l => [
+
+      l.name,
+      l.email,
+      l.phone,
+      l.linkedin,
+      l.score,
+      l.profile,
+      l.createdAt
+
+    ])
+
+  ];
+
+  const csv =
+    rows.map(row =>
+      row.map(value =>
+        `"${String(value || "").replace(/"/g, '""')}"`
+      ).join(",")
+    ).join("\n");
+
+  const blob =
+    new Blob([csv], {
+      type: "text/csv;charset=utf-8;"
+    });
+
+  const url =
+    URL.createObjectURL(blob);
+
+  const link =
+    document.createElement("a");
+
+  link.href = url;
+
+  link.download =
+    "riseandlead-vp-prospects.csv";
+
+  link.click();
+
+  URL.revokeObjectURL(url);
+
+}
+
+
+/* ---------- BOOKING ---------- */
+
+function bookCall() {
+
+  window.open(
+    "https://cal.id/riseandlead/partnership-call?duration=15",
+    "_blank"
+  );
+
+}
+
+
+/* ---------- RESTART ---------- */
+
+function restart() {
+
+  currentQuestion = 0;
+
+  answers =
+    new Array(questions.length).fill(null);
+
+  document.getElementById("leadForm").reset();
+
+  showScreen("landing");
+
+}
+
+
+/* ---------- SAFETY ---------- */
+
+function escapeHtml(value) {
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+/* ---------- INITIALIZE ---------- */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    showScreen("landing");
+
+  }
+);
+
+</script>
+
+</body>
+</html>
